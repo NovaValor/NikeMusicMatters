@@ -29,6 +29,4 @@ class MainActivity : MusicMattersBaseActivity(), MusicMattersEventDriver {
         detailFragment.eventDriver = this
         navigateTo(detailFragment)
     }
-
-    override val featureViewModel: MusicMattersViewModel get() = featureModel
 }
