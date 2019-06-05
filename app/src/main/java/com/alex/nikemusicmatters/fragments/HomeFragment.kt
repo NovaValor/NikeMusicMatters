@@ -25,7 +25,7 @@ class HomeFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        eventDriver.getFeatureViewModel().getAlbumsLiveData().observe(this, Observer { data -> bindContent(data) })
+        eventDriver.featureViewModel.getAlbumsLiveData().observe(this, Observer { data -> bindContent(data) })
     }
 
     private fun bindContent(dataSet:ArrayList<Album>){
@@ -35,11 +35,11 @@ class HomeFragment:Fragment() {
 
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.adapter = HomeFragmentRecyclerAdapter(dataSet,{album -> eventDriver.onSelectionEvent(album)})
-        recycler.layoutManager?.onRestoreInstanceState(eventDriver.getFeatureViewModel().recyclerInstanceState)
+        recycler.layoutManager?.onRestoreInstanceState(eventDriver.featureViewModel.recyclerInstanceState)
     }
 
     override fun onPause() {
         super.onPause()
-        eventDriver.getFeatureViewModel().recyclerInstanceState = recycler.layoutManager?.onSaveInstanceState()
+        eventDriver.featureViewModel.recyclerInstanceState = recycler.layoutManager?.onSaveInstanceState()
     }
 }

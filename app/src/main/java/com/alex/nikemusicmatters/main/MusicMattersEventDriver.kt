@@ -5,5 +5,5 @@ import com.alex.nikemusicmatters.models.MusicMattersViewModel
 
 interface MusicMattersEventDriver {
     fun onSelectionEvent(album: Album)
-    fun getFeatureViewModel():MusicMattersViewModel
+    val featureViewModel:MusicMattersViewModel
 }

@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.alex.nikemusicmatters.R
 import com.alex.nikemusicmatters.main.MusicMattersEventDriver
 import com.alex.nikemusicmatters.models.Album
@@ -24,7 +23,7 @@ class DetailFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindAlbum(eventDriver.getFeatureViewModel().selectedAlbum)
+        bindAlbum(eventDriver.featureViewModel.selectedAlbum)
         nav_out_button.setOnClickListener {navOut()}
     }
 
@@ -39,7 +38,7 @@ class DetailFragment:Fragment() {
 
     private fun navOut(){
         // just passing the uri with my intent, apple's deep links do the rest :)
-        val openUrlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(eventDriver.getFeatureViewModel().selectedAlbum.artistUrl))
+        val openUrlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(eventDriver.featureViewModel.selectedAlbum.artistUrl))
         startActivity(openUrlIntent)
     }
 }

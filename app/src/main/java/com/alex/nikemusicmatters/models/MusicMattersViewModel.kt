@@ -67,14 +67,17 @@ class MusicMattersViewModel:ViewModel() {
                 val genre = genres.getJSONObject(0)
                 val genreText = genre.getString("name")
 
-                workingList.add(Album(
-                    album.getString(apiKeys.artistName.name),
-                    album.getString("name"),
-                    album.getString(apiKeys.url.name),
-                    album.getString(apiKeys.artworkUrl100.name),
-                    album.getString(apiKeys.releaseDate.name),
-                    genreText,
-                    album.getString(apiKeys.copyright.name)))
+                with(album){
+                    workingList.add(Album(
+                        getString(apiKeys.artistName.name),
+                        getString("name"),
+                        getString(apiKeys.url.name),
+                        getString(apiKeys.artworkUrl100.name),
+                        getString(apiKeys.releaseDate.name),
+                        genreText,
+                        getString(apiKeys.copyright.name)))
+                }
+
             }
         }catch (e: JSONException){
             println("$TAG ${e.message}")
