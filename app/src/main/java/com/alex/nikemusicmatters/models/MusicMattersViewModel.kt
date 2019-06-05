@@ -18,7 +18,7 @@ class MusicMattersViewModel:ViewModel() {
 
     private val TAG = this.javaClass.simpleName
 
-    val FEATURE_ENDPOINT = "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/40/explicit.json"
+    private val FEATURE_ENDPOINT = "https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/40/explicit.json"
 
     lateinit var selectedAlbum:Album
 
@@ -42,7 +42,7 @@ class MusicMattersViewModel:ViewModel() {
         GlobalScope.launch{fetchData()}
     }
 
-    suspend fun fetchData(){
+    private suspend fun fetchData(){
         withContext(Dispatchers.IO){
             var data: JSONObject = JSONObject("{\"status\":\"root failure\"}")
             try {
@@ -57,7 +57,7 @@ class MusicMattersViewModel:ViewModel() {
         }
     }
 
-    fun parseData(iData: JSONArray){
+    private fun parseData(iData: JSONArray){
         val workingList = ArrayList<Album>()
         try {
             for(i in 0 until(iData.length())){
