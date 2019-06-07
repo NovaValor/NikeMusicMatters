@@ -14,7 +14,7 @@ abstract class MusicMattersBaseActivity:AppCompatActivity() {
 
     fun navigateTo(fragment: Fragment, addToStack:Boolean = true){
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.root_view, fragment)
+        transaction.replace(R.id.root_view, fragment, fragment.javaClass.simpleName)
         if (addToStack) transaction.addToBackStack(fragment.javaClass.simpleName)
         transaction.commit()
     }

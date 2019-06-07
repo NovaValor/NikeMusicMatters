@@ -21,6 +21,8 @@ class MainActivity : MusicMattersBaseActivity(), MusicMattersEventDriver {
             val homeFragment = HomeFragment()
             homeFragment.eventDriver = this
             navigateTo(homeFragment, false)
+        } else {
+            (supportFragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName) as HomeFragment).eventDriver = this
         }
     }
 
