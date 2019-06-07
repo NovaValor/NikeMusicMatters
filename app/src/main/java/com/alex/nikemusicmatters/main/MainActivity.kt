@@ -17,9 +17,11 @@ class MainActivity : MusicMattersBaseActivity(), MusicMattersEventDriver {
 
         featureModel = ViewModelProviders.of(this).get(MusicMattersViewModel::class.java)
 
-        val homeFragment = HomeFragment()
-        homeFragment.eventDriver = this
-        navigateTo(homeFragment, false)
+        if(savedInstanceState == null) {
+            val homeFragment = HomeFragment()
+            homeFragment.eventDriver = this
+            navigateTo(homeFragment, false)
+        }
     }
 
 
